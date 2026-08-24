@@ -1,0 +1,21 @@
+kind: Deployment
+metadata:
+  name: acmecorp-orders
+spec:
+  template:
+    spec:
+      containers:
+        # No resources block at all -- flagged.
+        - name: orders-api
+          image: acmecorp/orders-api:1.4.0
+
+        # Has requests and limits -- not flagged.
+        - name: orders-worker
+          image: acmecorp/orders-worker:1.4.0
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
