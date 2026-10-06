@@ -1,0 +1,10 @@
+<html>
+<body>
+Reports a container in a Kubernetes workload manifest (Deployment, Pod, StatefulSet, DaemonSet, Job, CronJob)
+with no <code>resources</code> block, or with one that is missing <code>requests</code> or <code>limits</code>.
+<!-- tooltip end -->
+<p>Without requests the scheduler cannot place the pod well; without limits a single container can use all the CPU
+or memory of its node and starve its neighbors. The check is a line-based scan of the manifest, so it works without
+the Kubernetes or YAML plugins.</p>
+</body>
+</html>
